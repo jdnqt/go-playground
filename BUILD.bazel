@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix cathyxz.dev/cert-installer
+gazelle(name = "gazelle")
+
+go_binary(
+    name = "hello",
+    embed = [":cert-installer_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "cert-installer_lib",
+    srcs = ["main.go"],
+    importpath = "cathyxz.dev/cert-installer",
+    visibility = ["//visibility:private"],
+    deps = ["//cmd"],
+)
