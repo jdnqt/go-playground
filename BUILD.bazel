@@ -5,7 +5,7 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 gazelle(name = "gazelle")
 
 go_binary(
-    name = "hello",
+    name = "cert-installer",
     embed = [":cert-installer_lib"],
     visibility = ["//visibility:public"],
 )
